@@ -4,7 +4,13 @@ GameAnalytics("setEnabledVerboseLog", true);
 GameAnalytics("initialize", "5b04cda662fd9a1df45bd36d9036eaec", "1b70523d5cac537aa308385cd1836471e28cd5c6");
 GameAnalytics("configureBuild", "phaser 0.0.1");
 
-GameAnalytics("configureUserId", "user1234567879");
+let userid = localStorage['userid'];
+if(!userid) {
+    userid = "user"+Math.random().toString(36).substr(2,5);
+    localStorage['userid'] = userid;
+}
+
+GameAnalytics("configureUserId", userid);
 
 GameAnalytics("configureAvailableResourceCurrencies", ["gems", "gold"]);
 GameAnalytics("configureAvailableResourceItemTypes", ["boost", "lives"]);
